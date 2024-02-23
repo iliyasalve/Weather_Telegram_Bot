@@ -2,6 +2,7 @@ from config import api_key
 
 import requests
 import datetime 
+from datetime import timezone
 
 def city_info(city: str, api: str) -> dict:
     '''
@@ -52,8 +53,11 @@ def weather_info(lat: float, lon: float) -> dict:
 
     weather_info_dict['visibility'] = current_weather['visibility']/1000
 
-    weather_info_dict['sunrise'] = datetime.datetime.fromtimestamp(current_weather['sys']['sunrise'] ).strftime('%H:%M:%S')
-    weather_info_dict['sunset'] = datetime.datetime.fromtimestamp(current_weather['sys']['sunset'] ).strftime('%H:%M:%S')
+    sunrise_unix_time = current_weather['sys']['sunrise'] + current_weather['timezone']
+    weather_info_dict['sunrise'] = datetime.datetime.fromtimestamp(sunrise_unix_time, tz=timezone.utc).strftime('%H:%M:%S')
+    
+    sunset_unix_time = current_weather['sys']['sunset'] + current_weather['timezone']
+    weather_info_dict['sunset'] = datetime.datetime.fromtimestamp(sunset_unix_time, tz=timezone.utc).strftime('%H:%M:%S')
 
     return weather_info_dict
 
