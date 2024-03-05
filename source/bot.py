@@ -1,16 +1,12 @@
 from config import token
 from weather import weather_message
 from translation import translate_message
+from keyboard import weather_search_button
 
 import telebot
-from telebot import types
 
 # Getting a bot token
 bot = telebot.TeleBot(token)
-
-# Keyboard
-markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-markup.row('/weather')
 
 
 @bot.message_handler(commands=['start'])
@@ -25,23 +21,27 @@ def send_welcome(message):
         welcome_message = translate_message(welcome_message, language)
         message_for_user = translate_message(message_for_user, language)
 
-    msg = bot.send_message(message.chat.id, f"{welcome_message}, {message.from_user.first_name}! \n\n" +
-                           message_for_user, reply_markup=markup)
+    bot.send_message(message.chat.id, f"{welcome_message}, {message.from_user.first_name}! \n\n" +
+                           message_for_user, reply_markup = weather_search_button())
 
 
-@bot.message_handler(commands=['weather'])
-def weather(message):
+@bot.message_handler(content_types=['text'])
+def bot_message(message):
 
     language = message.from_user.language_code
 
-    message_for_user = "Write your city:"
+    if message.chat.type == 'private':
 
-    if language != "en":
-        message_for_user = translate_message(message_for_user, language)
+        if message.text == "-- 🌍🔍--":
 
-    msg = bot.send_message(message.chat.id, message_for_user)
+            message_for_user = "Write your city:"
 
-    bot.register_next_step_handler(msg, current_weather)
+            if language != "en":
+                message_for_user = translate_message(message_for_user, language)
+
+            msg = bot.send_message(message.chat.id, message_for_user)
+
+            bot.register_next_step_handler(msg, current_weather)
 
 
 def current_weather(message):
@@ -58,7 +58,7 @@ def current_weather(message):
         if language != "en":
             weather_info = translate_message(weather_info, language)
 
-        bot.send_photo(message.chat.id, icon, weather_info, parse_mode="Markdown", reply_markup=markup)
+        bot.send_photo(message.chat.id, icon, weather_info, parse_mode="Markdown", reply_markup = weather_search_button())
     
     except Exception as e:
 
@@ -69,7 +69,7 @@ def current_weather(message):
         if language != "en":
             message_for_user = translate_message(message_for_user, language)
 
-        bot.send_message(message.chat.id, message_for_user, reply_markup=markup)
+        bot.send_message(message.chat.id, message_for_user, reply_markup = weather_search_button())
 
 
 if __name__ == '__main__':
