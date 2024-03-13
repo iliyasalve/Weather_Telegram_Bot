@@ -25,6 +25,8 @@ After the user selects a city, the user can find out the following weather infor
 Information is displayed in the language used in the Telegram application.
 
 > [!TIP]
+> Telegram bot written using the library [telebot](https://pypi.org/project/pyTelegramBotAPI/)
+>
 > Weather data is taken using the API from the site [OpenWeatherMap](https://openweathermap.org/)
 >
 > Translation of messages is carried out thanks to the library [translate](https://pypi.org/project/translate/)
@@ -59,6 +61,8 @@ Une fois que l'utilisateur a sélectionné une ville, l'utilisateur peut trouver
 Les informations sont affichées dans la langue utilisée dans l'application Telegram.
 
 > [!TIP]
+> Bot Telegram écrit à l'aide de la bibliothèque [telebot](https://pypi.org/project/pyTelegramBotAPI/)
+>
 > Les données météo sont récupérées grâce à l'API du site [OpenWeatherMap](https://openweathermap.org/)
 >
 > La traduction des messages s'effectue grâce à la bibliothèque [translate](https://pypi.org/project/translate/)
