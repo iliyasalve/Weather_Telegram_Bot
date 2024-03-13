@@ -26,6 +26,7 @@ Information is displayed in the language used in the Telegram application.
 
 > [!TIP]
 > Weather data is taken using the API from the site [OpenWeatherMap](https://openweathermap.org/)
+>
 > Translation of messages is carried out thanks to the library [translate](https://pypi.org/project/translate/)
 
 > [!NOTE]
@@ -59,6 +60,7 @@ Les informations sont affichées dans la langue utilisée dans l'application Tel
 
 > [!TIP]
 > Les données météo sont récupérées grâce à l'API du site [OpenWeatherMap](https://openweathermap.org/)
+>
 > La traduction des messages s'effectue grâce à la bibliothèque [translate](https://pypi.org/project/translate/)
 
 > [!NOTE]
