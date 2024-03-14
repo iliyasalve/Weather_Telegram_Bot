@@ -31,6 +31,9 @@ Information is displayed in the language used in the Telegram application.
 >
 > Translation of messages is carried out thanks to the library [translate](https://pypi.org/project/translate/)
 
+> [!IMPORTANT]
+> All necessary libraries that require installation are stored in the requirements.txt file.
+
 > [!NOTE]
 > This code ran and worked correctly on Windows 10.
 
@@ -66,6 +69,9 @@ Les informations sont affichées dans la langue utilisée dans l'application Tel
 > Les données météo sont récupérées grâce à l'API du site [OpenWeatherMap](https://openweathermap.org/)
 >
 > La traduction des messages s'effectue grâce à la bibliothèque [translate](https://pypi.org/project/translate/)
+
+> [!IMPORTANT]
+> Toutes les bibliothèques nécessaires qui nécessitent une installation sont stockées dans le fichier requirements.txt
 
 > [!NOTE]
 > Ce code s'est exécuté et a fonctionné correctement sous Windows 10
